@@ -1,20 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Generic Test App
-"""
-import copy
+
 import os
 import traceback
 import converter
 
-from PyQt5 import QtWidgets, uic, QtCore, QtGui
-from PyQt5.QtPrintSupport import QPrintDialog, QPrinter
-from PyQt5.QtGui import QIcon, QPixmap, QPainter, QKeySequence
-from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot, QEvent, QSize, QFile, QTextStream, QIODevice, QDir
-from PyQt5.QtWidgets import QBoxLayout, QSpinBox, QDoubleSpinBox, QSlider, QLabel, QWidget, QHBoxLayout, \
-    QVBoxLayout, QStackedWidget, QComboBox, QSizePolicy, QToolButton, QMenu, QAction, QMessageBox, QApplication, \
-    QScrollArea, QFrame, QGridLayout, QSplitter, QCheckBox, QSpacerItem, QLineEdit, QPushButton, QFormLayout, QDialog
+from PyQt5 import QtWidgets, uic
+from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import pyqtSlot, QFile, QTextStream, QIODevice
+from PyQt5.QtWidgets import QVBoxLayout,  QMenu, QAction, QMessageBox,  QLineEdit, QPushButton
 
 __authors__ = {"Philipp Reichert": "prei@me.com"}
 
@@ -151,9 +145,10 @@ class MainWindow(base, form):
         """
         This method sets the url for the input html.
         """
-        self.input_f = QtWidgets.QFileDialog.getOpenFileName(self, 'Open HTML', '', 'HTML (*.HTML)')
+        self.input_f = QtWidgets.QFileDialog.getOpenFileName(self, 'Open document', '', 'Markup files (*.xml, '
+                                                                                        '*.xhtml, *.html, *.htm)')
         if self.input_f[0]:
-            print("Input file: " + str(self.input_f[0]))
+            print("Input document: " + str(self.input_f[0]))
             self.saveAct.setEnabled(True)
             self.remote = False
 
