@@ -33,6 +33,11 @@ def convert_batch(input_dir, output_dir):
     get_html_files(input_dir)
 
     for e in f:
+
+        path = os.path.join(output_dir, os.path.dirname(e))
+
+        if not os.path.exists(path):
+            os.makedirs(path)
         convert(os.path.join(input_dir, e), os.path.join(output_dir, os.path.splitext(e)[0] + ".pdf"))
 
 
@@ -43,6 +48,7 @@ def convert(input_f, output_f, remote=None):
             'document': "file:///" + input_f,
         }
     else:
+
         config = {
             'document': input_f,
         }
